@@ -1,0 +1,3 @@
+include ':uiparse'
+include ':app'
+rootProject.name = "UIParse"

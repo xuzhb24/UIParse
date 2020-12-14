@@ -84,7 +84,12 @@ public class ActivityStructure {
             }
         }
         if (firstList.size() > 0) {
-            return firstList.get(0);
+            for (FragmentStructure f : firstList) {
+                if (isFilter(f)) {
+                    continue;
+                }
+                return f;
+            }
         }
         return null;
     }

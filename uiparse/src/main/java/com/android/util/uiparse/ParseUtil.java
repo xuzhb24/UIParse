@@ -21,15 +21,25 @@ public class ParseUtil {
 
     //双击屏幕顶部中间区域获取当前页面的Activity信息
     public static void showTopActivityInfo(AppCompatActivity activity, MotionEvent ev) {
+        showTopActivityInfo(activity, ev, 40, 80);
+    }
+
+    /**
+     * 双击屏幕顶部中间区域获取当前页面的Activity信息
+     *
+     * @param width  点击区域宽度，以dp为单位
+     * @param height 点击区域高度，以dp为单位
+     */
+    public static void showTopActivityInfo(AppCompatActivity activity, MotionEvent ev, float width, float height) {
         WindowManager manager = (WindowManager) activity.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         manager.getDefaultDisplay().getMetrics(dm);
-        int screenWidth = dm.widthPixels;
-        float width = Util.dp2px(activity, 40);
-        float height = Util.dp2px(activity, 80);
-        float left = (screenWidth - width) / 2f;
-        float right = left + width;
-        if (ev.getAction() == MotionEvent.ACTION_DOWN && ev.getRawY() < height
+        int screenWidth = dm.widthPixels;  //获取屏幕宽度
+        float widthPx = Util.dp2px(activity, width);
+        float heightPx = Util.dp2px(activity, height);
+        float left = (screenWidth - widthPx) / 2f;
+        float right = left + widthPx;
+        if (ev.getAction() == MotionEvent.ACTION_DOWN && ev.getRawY() < heightPx
                 && ev.getRawX() > left && ev.getRawX() < right) {
             CheckFastClickUtil.setOnMultiClickListener(600, clickCount -> {
                 if (clickCount == 2) {

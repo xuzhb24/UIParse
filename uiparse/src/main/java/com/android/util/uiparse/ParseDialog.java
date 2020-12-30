@@ -68,7 +68,7 @@ public class ParseDialog extends DialogFragment {
             WindowManager.LayoutParams params = window.getAttributes();
             params.dimAmount = 0.1f;
             params.gravity = Gravity.CENTER;
-            params.width = (int) Util.dp2px(getContext(), 280);
+            params.width = (int) Util.dp2px(getContext(), 300);
             params.height = WindowManager.LayoutParams.WRAP_CONTENT;
             window.setAttributes(params);
         }

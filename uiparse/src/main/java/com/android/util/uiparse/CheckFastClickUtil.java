@@ -33,11 +33,10 @@ public class CheckFastClickUtil {
         long delay = currentClickTime - mLastClickTime;
         if (delay <= interval) {
             mClickCount.incrementAndGet();
-            listener.onMultiClick(mClickCount.get());
         } else {
             mClickCount.set(1);
-            listener.onMultiClick(mClickCount.get());
         }
+        listener.onMultiClick(mClickCount.get());
         mLastClickTime = currentClickTime;
     }
 

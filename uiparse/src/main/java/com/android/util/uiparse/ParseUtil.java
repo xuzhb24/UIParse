@@ -30,7 +30,7 @@ public class ParseUtil {
      * @param width  点击区域宽度，以dp为单位
      * @param height 点击区域高度，以dp为单位
      */
-    public static void showTopActivityInfo(AppCompatActivity activity, MotionEvent ev, float width, float height) {
+    public static void showTopActivityInfo(final AppCompatActivity activity, MotionEvent ev, float width, float height) {
         WindowManager manager = (WindowManager) activity.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         manager.getDefaultDisplay().getMetrics(dm);
@@ -41,9 +41,12 @@ public class ParseUtil {
         float right = left + widthPx;
         if (ev.getAction() == MotionEvent.ACTION_DOWN && ev.getRawY() < heightPx
                 && ev.getRawX() > left && ev.getRawX() < right) {
-            CheckFastClickUtil.setOnMultiClickListener(600, clickCount -> {
-                if (clickCount == 2) {
-                    ParseDialog.newInstance().show(activity.getSupportFragmentManager());
+            CheckFastClickUtil.setOnMultiClickListener(600, new CheckFastClickUtil.OnMultiClickListener() {
+                @Override
+                public void onMultiClick(int clickCount) {
+                    if (clickCount == 2) {
+                        ParseDialog.newInstance().show(activity.getSupportFragmentManager());
+                    }
                 }
             });
         }

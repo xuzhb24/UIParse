@@ -1,6 +1,6 @@
 解析页面结构，双击屏幕顶部中间区域获取前台Activity类名和前台Fragment类名，适用于AppCompatActivity  
 导入：  
-implementation 'com.github.xuzhb24:uiparse:1.0.1'  
+implementation 'com.github.xuzhb24:uiparse:1.0.2'  
 同时需要在Project的build.gradle的repositories下加入maven { url "https://jitpack.io" }，在Module的build.gradle的defaultConfig下加入  
 compileOptions {  
   sourceCompatibility JavaVersion.VERSION_1_8  
